@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-from string import find
 
 
 def getnicetimefromdatetime(datetimeinput, basedatetime=None):
@@ -39,13 +38,13 @@ def getdatetimefromnicetime(nicetime, basedatetime=None):
         sections = nicetime.split(' ')
 
     for section in sections:
-        if find(section, 'd') > 0:
+        if section.find('d') > 0:
             result[0] = int(section.replace('d', ''))
-        if find(section, 'h') > 0:
+        if section.find('h') > 0:
             result[1] = int(section.replace('h', ''))
-        if find(section, 'm') > 0:
+        if section.find('m') > 0:
             result[2] = int(section.replace('m', ''))
-        if find(section, 's') > 0:
+        if section.find('s') > 0:
             result[3] = int(section.replace('s', ''))
 
     delta = timedelta(days=result[0], hours=result[1], minutes=result[2], seconds=result[3])
