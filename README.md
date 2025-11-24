@@ -1,8 +1,5 @@
 # NagParser
 
-This project previously lived at <https://github.com/zebpalmer/NagParser> which is now dead.  
-Documentation: <http://nagparser.readthedocs.org/> is outdated.
-
 ## Functionality
 NagParser is a Python library for parsing Nagios runtime data from ``status.dat`` and
 ``objects.cache`` files and presenting it as easy-to-use Python objects. It enables you to
@@ -45,5 +42,5 @@ pip install -e ".[dev]"
 ## Documentation
 
 Current documentation can be found at:  
-<http://nagparser.readthedocs.org/>
+<https://ixs.github.io/NagParser3/>
 
