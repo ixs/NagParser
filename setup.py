@@ -18,6 +18,7 @@ setup(
     license='GPLv3',
     description='Parse realtime Nagios Data from status.dat and objects.cache, do useful stuff with it',
     long_description=open('README.rst').read(),
+    python_requires='>=3.8',
     classifiers=[
               'Development Status :: 3 - Alpha',
               'Environment :: Console',
