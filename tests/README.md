@@ -2,6 +2,19 @@
 
 This directory contains the comprehensive pytest test suite for NagParser.
 
+## Python Version Support
+
+NagParser supports Python 3.6+ with tests running on:
+- Python 3.6
+- Python 3.7
+- Python 3.8
+- Python 3.9
+- Python 3.10
+- Python 3.11
+- Python 3.12
+
+Tests are automatically run via GitHub Actions on every commit and pull request.
+
 ## Running Tests
 
 ### Using pytest directly
@@ -28,6 +41,10 @@ pytest tests/test_models.py::TestHost::test_host_has_services
 ```bash
 # Run tests through tox (recommended for CI/CD)
 tox
+
+# Run tests for specific Python version
+tox -e py36  # Python 3.6
+tox -e py312 # Python 3.12
 ```
 
 ## Test Organization
