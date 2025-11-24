@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NagParser"
+version = "0.0.31"
+description = "Parse realtime Nagios Data from status.dat and objects.cache, do useful stuff with it"
+readme = "README.rst"
+license = {text = "GPLv3"}
+authors = [
+    {name = "Matt Kennedy & Zeb Palmer", email = "zeb@zebpalmer.com"}
+]
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Environment :: Plugins",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Telecommunications Industry",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities"
+]
+
+[project.urls]
+Homepage = "http://github.com/zebpalmer/NagiosParser"
+
+[project.optional-dependencies]
+# Development dependencies (includes testing)
+dev = [
+    "pytest>=7.0.0,<9.0.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["nagparser*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py", "*Tests.py"]
+python_classes = ["Test*", "*Tests"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
