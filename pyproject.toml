@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "NagParser"
 version = "0.0.50"
 description = "Parse realtime Nagios Data from status.dat and objects.cache, do useful stuff with it"
-readme = "README.rst"
+readme = "README.md"
 license = {text = "GPLv3"}
 authors = [
     {name = "Andreas Thienemann", email = "andreas@bawue.net"},
@@ -34,7 +34,6 @@ classifiers = [
 Homepage = "https://github.com/ixs/NagParser"
 
 [project.optional-dependencies]
-# Development dependencies (includes testing)
 dev = [
     "pytest>=7.0.0,<9.0.0",
 ]
