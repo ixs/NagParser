@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NagParser"
-version = "0.0.50"
+version = "0.0.51"
 description = "Parse realtime Nagios Data from status.dat and objects.cache, do useful stuff with it"
 readme = "README.md"
 license = {text = "GPLv3"}

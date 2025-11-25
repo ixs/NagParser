@@ -7,7 +7,7 @@ readme = (this_dir / "README.md").read_text()
 
 setup(
     name="NagParser",
-    version="0.0.50",
+    version="0.0.51",
     description="Parse realtime Nagios Data from status.dat and objects.cache",
     long_description=readme,
     long_description_content_type="text/markdown",
