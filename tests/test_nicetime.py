@@ -12,28 +12,28 @@ class TestNiceTime:
         now = datetime.now()
         recent = now - timedelta(seconds=30)
         result = getnicetimefromdatetime(recent)
-        assert 's' in result  # Should contain 's' for seconds
+        assert "s" in result  # Should contain 's' for seconds
 
     def test_getnicetimefromdatetime_minutes(self):
         """Test nicetime for datetime minutes ago."""
         now = datetime.now()
         minutes_ago = now - timedelta(minutes=5)
         result = getnicetimefromdatetime(minutes_ago)
-        assert 'm' in result  # Should contain 'm' for minutes
+        assert "m" in result  # Should contain 'm' for minutes
 
     def test_getnicetimefromdatetime_hours(self):
         """Test nicetime for datetime hours ago."""
         now = datetime.now()
         hours_ago = now - timedelta(hours=2)
         result = getnicetimefromdatetime(hours_ago)
-        assert 'h' in result  # Should contain 'h' for hours
+        assert "h" in result  # Should contain 'h' for hours
 
     def test_getnicetimefromdatetime_days(self):
         """Test nicetime for datetime days ago."""
         now = datetime.now()
         days_ago = now - timedelta(days=3)
         result = getnicetimefromdatetime(days_ago)
-        assert 'd' in result  # Should contain 'd' for days
+        assert "d" in result  # Should contain 'd' for days
 
     def test_getnicetimefromdatetime_returns_string(self):
         """Test that nicetime returns a string."""
@@ -70,12 +70,12 @@ class TestNiceTime:
         original = datetime.now() - timedelta(hours=1)
         nicetime = getnicetimefromdatetime(original)
         result = getdatetimefromnicetime(nicetime)
-        
+
         # The roundtrip adds time instead of subtracting, so we need to reverse
         # This is a limitation of the nicetime format - it doesn't track direction
         # Just verify the function doesn't crash
         assert isinstance(result, datetime)
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

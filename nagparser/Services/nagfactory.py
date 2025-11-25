@@ -8,27 +8,27 @@ from nagparser.Model import Nag, Host, Service, ServiceGroup
 
 def parse(config):
     """Parse Nagios status and cache files into a Nag object.
-    
+
     This is the main entry point for NagParser. It reads Nagios runtime data from
     status.dat and objects.cache files and constructs a hierarchical object structure
     containing hosts, services, and service groups.
-    
+
     Args:
         config (NagConfig): Configuration object containing file paths and options.
                            Must have a 'files' attribute with paths to status.dat
                            and/or objects.cache files.
-    
+
     Returns:
         Nag: A Nag object containing all parsed hosts, services, and service groups.
              The returned object provides access to:
              - nag.hosts: NagList of Host objects
              - nag.services: NagList of Service objects
              - nag.servicegroups: NagList of ServiceGroup objects
-    
+
     Raises:
         Exception: If an invalid filename is detected (must contain '.cache' or '.dat')
         IOError: If specified files don't exist (raised by NagConfig)
-    
+
     Example:
         >>> from nagparser import parse, NagConfig
         >>> config = NagConfig(files=['/var/lib/nagios3/objects.cache',
@@ -48,38 +48,38 @@ def parse(config):
 
         if nag == None:
             nag = Nag()
-        if '.cache' in filename:
-            sectionsnames = ['define servicegroup']
-        elif '.dat' in filename:
-            sectionsnames = ['hoststatus', 'servicestatus', 'programstatus', 'info']
+        if ".cache" in filename:
+            sectionsnames = ["define servicegroup"]
+        elif ".dat" in filename:
+            sectionsnames = ["hoststatus", "servicestatus", "programstatus", "info"]
         else:
-            raise Exception('Invalid filename detected')
+            raise Exception("Invalid filename detected")
 
         for section in sectionsnames:
-            pat = re.compile(section + r' \{([\S\s]*?)\t}', re.DOTALL)
+            pat = re.compile(section + r" \{([\S\s]*?)\t}", re.DOTALL)
 
             for sectioncontent in pat.findall(content):
-                if section == 'hoststatus':
+                if section == "hoststatus":
                     temp = Host(nag)
-                elif section == 'servicestatus':
+                elif section == "servicestatus":
                     temp = Service(nag)
-                elif section in ['programstatus', 'info']:
+                elif section in ["programstatus", "info"]:
                     temp = nag
-                elif section == 'define servicegroup':
+                elif section == "define servicegroup":
                     temp = ServiceGroup(nag)
 
                 for attr in sectioncontent.splitlines():
                     attr = attr.strip()
-                    if len(attr) == 0 or attr.startswith('#'):
+                    if len(attr) == 0 or attr.startswith("#"):
                         pass
                     else:
-                        if section == 'define servicegroup':
-                            delim = '\t'
+                        if section == "define servicegroup":
+                            delim = "\t"
                         else:
-                            delim = '='
+                            delim = "="
 
                         shortattr = attr.split(delim)[0].lower()
-                        value = attr.replace(shortattr + delim, '')
+                        value = attr.replace(shortattr + delim, "")
                         try:
                             value = int(str(value))
                         except ValueError:

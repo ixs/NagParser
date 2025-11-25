@@ -5,6 +5,7 @@ from nagparser.Model.NagList import NagList
 
 class MockNagObject:
     """Mock object for testing NagList."""
+
     def __init__(self, name):
         self.name = name
 
@@ -64,19 +65,19 @@ class TestNagList:
         obj1 = MockNagObject("obj1")
         obj2 = MockNagObject("obj2")
         naglist = NagList([obj1])
-        
+
         # Test append
         naglist.append(obj2)
         assert len(naglist) == 2
-        
+
         # Test iteration
         names = [obj.name for obj in naglist]
         assert names == ["obj1", "obj2"]
-        
+
         # Test indexing
         assert naglist[0] == obj1
         assert naglist[1] == obj2
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

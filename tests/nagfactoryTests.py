@@ -21,5 +21,5 @@ class TestNagFactory:
         assert len(test_nag.services) > 0
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

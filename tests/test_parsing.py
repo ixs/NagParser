@@ -17,12 +17,12 @@ class TestParsing:
         """Test parsing with valid test files."""
         nag = parse(test_nagconfig)
         assert nag is not None
-        assert hasattr(nag, 'hosts')
-        assert hasattr(nag, 'services')
+        assert hasattr(nag, "hosts")
+        assert hasattr(nag, "services")
 
     def test_parsed_nag_has_config(self, test_nag):
         """Test that parsed Nag object has config reference."""
-        assert hasattr(test_nag, 'config')
+        assert hasattr(test_nag, "config")
         assert isinstance(test_nag.config, NagConfig)
 
     def test_parsed_nag_has_hosts_list(self, test_nag):
@@ -39,34 +39,34 @@ class TestParsing:
         """Test that parsed hosts have required attributes."""
         if test_nag.hosts:
             host = test_nag.hosts.first
-            assert hasattr(host, 'host_name')
-            assert host.host_name != ''
+            assert hasattr(host, "host_name")
+            assert host.host_name != ""
 
     def test_parsed_services_have_required_attributes(self, test_nag):
         """Test that parsed services have required attributes."""
         if test_nag.services:
             service = test_nag.services.first
-            assert hasattr(service, 'host_name')
-            assert hasattr(service, 'service_description')
-            assert hasattr(service, 'current_state')
+            assert hasattr(service, "host_name")
+            assert hasattr(service, "service_description")
+            assert hasattr(service, "current_state")
 
     def test_parse_invalid_file_raises_error(self):
         """Test that parsing with invalid files raises an error."""
         with pytest.raises(IOError):
-            config = NagConfig(['nonexistent_file.dat'])
+            config = NagConfig(["nonexistent_file.dat"])
 
     def test_parse_with_cache_file(self, testdata_dir):
         """Test parsing objects.cache file."""
-        cache_file = os.path.join(testdata_dir, 'test_objects.cache')
+        cache_file = os.path.join(testdata_dir, "test_objects.cache")
         # We need both files for proper parsing, but we can at least verify file exists
         assert os.path.exists(cache_file)
 
     def test_parse_with_status_file(self, testdata_dir):
         """Test parsing status.dat file."""
-        status_file = os.path.join(testdata_dir, 'test_status.dat')
+        status_file = os.path.join(testdata_dir, "test_status.dat")
         # We need both files for proper parsing, but we can at least verify file exists
         assert os.path.exists(status_file)
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

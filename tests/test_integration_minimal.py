@@ -26,7 +26,7 @@ class TestIntegration:
         """Test the host has a name."""
         host = test_nag.hosts.first
         assert host.host_name is not None
-        assert host.host_name != ''
+        assert host.host_name != ""
 
     def test_host_has_services(self, test_nag):
         """Test that the host has services."""
@@ -37,7 +37,7 @@ class TestIntegration:
         """Test that services have valid states."""
         for service in test_nag.services:
             status, isdowntime = service.status
-            assert status in ['ok', 'warning', 'critical', 'unknown', 'stale']
+            assert status in ["ok", "warning", "critical", "unknown", "stale"]
             assert isinstance(isdowntime, bool)
 
     def test_service_has_host_reference(self, test_nag):
@@ -75,5 +75,5 @@ class TestIntegration:
             assert isinstance(name, str)
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

@@ -10,28 +10,28 @@ class TestHost:
         """Test that hosts have associated services."""
         if test_nag.hosts:
             host = test_nag.hosts.first
-            assert hasattr(host, 'services')
+            assert hasattr(host, "services")
             # Services should be a list-like object
-            assert hasattr(host.services, '__iter__')
+            assert hasattr(host.services, "__iter__")
 
     def test_host_has_name(self, test_nag):
         """Test that hosts have a name property."""
         if test_nag.hosts:
             host = test_nag.hosts.first
-            assert hasattr(host, 'name')
+            assert hasattr(host, "name")
             assert host.name == host.host_name
 
     def test_host_has_status(self, test_nag):
         """Test that hosts have a status property."""
         if test_nag.hosts:
             host = test_nag.hosts.first
-            assert hasattr(host, 'status')
+            assert hasattr(host, "status")
 
     def test_can_create_host_object(self, test_nag):
         """Test that we can create a Host object."""
         host = Host(test_nag)
         assert isinstance(host, Host)
-        assert host.host_name == ''
+        assert host.host_name == ""
 
 
 class TestService:
@@ -41,7 +41,7 @@ class TestService:
         """Test that services have an associated host."""
         if test_nag.services:
             service = test_nag.services.first
-            assert hasattr(service, 'host')
+            assert hasattr(service, "host")
             if service.host:
                 assert isinstance(service.host, Host)
 
@@ -49,23 +49,23 @@ class TestService:
         """Test that services have a name property."""
         if test_nag.services:
             service = test_nag.services.first
-            assert hasattr(service, 'name')
+            assert hasattr(service, "name")
             assert service.name == service.service_description
 
     def test_service_has_status(self, test_nag):
         """Test that services have a status property."""
         if test_nag.services:
             service = test_nag.services.first
-            assert hasattr(service, 'status')
+            assert hasattr(service, "status")
             status, isdowntime = service.status
-            assert status in ['ok', 'warning', 'critical', 'unknown', 'stale']
+            assert status in ["ok", "warning", "critical", "unknown", "stale"]
             assert isinstance(isdowntime, bool)
 
     def test_service_has_servicegroups(self, test_nag):
         """Test that services have a servicegroups property."""
         if test_nag.services:
             service = test_nag.services.first
-            assert hasattr(service, 'servicegroups')
+            assert hasattr(service, "servicegroups")
 
     def test_can_create_service_object(self, test_nag):
         """Test that we can create a Service object."""
@@ -83,18 +83,18 @@ class TestServiceGroup:
         servicegroups = test_nag.getservicegroups()
         if servicegroups:
             sg = servicegroups.first
-            assert hasattr(sg, 'services')
+            assert hasattr(sg, "services")
 
     def test_servicegroup_has_name(self, test_nag):
         """Test that service groups have a name."""
         servicegroups = test_nag.getservicegroups()
         if servicegroups:
             sg = servicegroups.first
-            assert hasattr(sg, 'servicegroup_name')
+            assert hasattr(sg, "servicegroup_name")
 
     def test_nag_has_servicegroups(self, test_nag):
         """Test that Nag object has service groups."""
-        assert hasattr(test_nag, 'servicegroups')
+        assert hasattr(test_nag, "servicegroups")
         servicegroups = test_nag.servicegroups
         assert servicegroups is not None
 
@@ -104,5 +104,5 @@ class TestServiceGroup:
         assert isinstance(sg, ServiceGroup)
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

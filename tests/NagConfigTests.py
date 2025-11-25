@@ -13,10 +13,10 @@ class TestNagConfig:
 
     def test_fake_files_raise_exception(self):
         """Test that non-existent files raise IOError."""
-        files = ['fakefile.cache', 'fakefile.dat']
+        files = ["fakefile.cache", "fakefile.dat"]
         with pytest.raises(IOError):
             NagConfig(files)
 
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

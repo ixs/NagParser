@@ -7,15 +7,15 @@ from nagparser import parse, NagConfig
 @pytest.fixture
 def testdata_dir():
     """Return the path to the test data directory."""
-    return os.path.join(os.path.dirname(__file__), 'testdata')
+    return os.path.join(os.path.dirname(__file__), "testdata")
 
 
 @pytest.fixture
 def test_nagconfig(testdata_dir):
     """Create a NagConfig instance with test data files."""
     files = [
-        os.path.join(testdata_dir, 'test_objects.cache'),
-        os.path.join(testdata_dir, 'test_status.dat')
+        os.path.join(testdata_dir, "test_objects.cache"),
+        os.path.join(testdata_dir, "test_status.dat"),
     ]
     nagconfig = NagConfig(files)
     # Ignore stale data since we're using old timestamps in test data
@@ -32,4 +32,4 @@ def test_nag(test_nagconfig):
 @pytest.fixture
 def expectedresults_dir():
     """Return the path to the expected results directory."""
-    return os.path.join(os.path.dirname(__file__), 'ExpectedResults')
+    return os.path.join(os.path.dirname(__file__), "ExpectedResults")
